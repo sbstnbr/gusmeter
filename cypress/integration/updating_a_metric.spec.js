@@ -4,6 +4,6 @@ describe("Updating a metric", () => {
 
     cy.get('[data-testid="water"]').click();
 
-    cy.get('[data-testid="waterDone"]').should("have.value", "01/05");
+    cy.get('[data-testid="waterDone"]').contains("01/05");
   });
 });
