@@ -1,7 +1,8 @@
 # TODO
 
 - [x] Setup TDD with Cypress and react-testing-library - https://learntdd.in/react/
-- [ ] Simple feature - when I click on a metrics it gets updated to today's date
+- [x] Simple feature - when I click on a metrics it gets updated to today's date
+- [ ] Connect to Firestore
 - [ ] Setup Mobx
 
 # FEATURES
