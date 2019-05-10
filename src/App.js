@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import MetricsList from "./MetricsList";
+import MetricsList from "./components/Metrics/MetricsList";
 import { withFirebase } from "./components/Firebase";
 class App extends Component {
   render() {

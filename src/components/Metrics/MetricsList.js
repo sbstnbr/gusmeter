@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Metrics from "./Metrics";
 
 export default function MetricsList(props) {
   const { firebase } = props;
@@ -8,7 +9,7 @@ export default function MetricsList(props) {
       const result = await firebase.db.collection("metrics").get();
       const metrics = result.docs.map(query => ({
         id: query.id,
-        ...query.data()
+        done: query.data().done.toDate()
       }));
       console.log(metrics);
       setIsLoading(false);
@@ -27,11 +28,9 @@ export default function MetricsList(props) {
       {isLoading ? (
         <h1>Loading</h1>
       ) : (
-        <ul>
-          {metricsList.map(metrics => (
-            <li key={metrics.id}>{metrics.id}</li>
-          ))}
-        </ul>
+        metricsList.map(metrics => (
+          <Metrics key={metrics.id} id={metrics.id} done={metrics.done} />
+        ))
       )}
     </div>
   );
