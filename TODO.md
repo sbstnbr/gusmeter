@@ -7,7 +7,6 @@
 
 # FEATURES
 
-- [ ] Display hardcoded metrics
-- [ ] Load metrics from Firestore
-- [ ] Add login
+- [x] Load metrics from Firestore
 - [ ] Update metrics
+- [ ] Add login

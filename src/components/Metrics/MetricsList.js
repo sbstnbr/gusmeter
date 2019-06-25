@@ -4,18 +4,22 @@ import Metrics from "./Metrics";
 export default function MetricsList(props) {
   const { firebase } = props;
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      const result = await firebase.db.collection("metrics").get();
-      const metrics = result.docs.map(query => ({
-        id: query.id,
-        done: query.data().done.toDate()
-      }));
-      console.log(metrics);
-      setIsLoading(false);
-      setMetricsList(metrics);
-    };
-    fetchData();
+    setIsLoading(true);
+    firebase.db
+      .collection("metrics")
+      .get()
+      .then(result => {
+        const metrics = result.docs.map(query => ({
+          id: query.id,
+          done: query.data().done.toDate()
+        }));
+        setIsLoading(false);
+        setMetricsList(metrics);
+      })
+      .catch(err => {
+        console.error(err);
+        setIsLoading(false);
+      });
   }, [firebase.db]);
   const [isLoading, setIsLoading] = useState(true);
   const [done, setDone] = useState("01/01");
